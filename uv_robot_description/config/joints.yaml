@@ -1,0 +1,52 @@
+joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 100
+
+back_height_controller:
+    type: position_controllers/JointPositionController
+    joint: back_servo_base_joint
+
+front_height_controller:
+    type: position_controllers/JointPositionController
+    joint: front_servo_base_joint
+
+right_height_controller:
+    type: position_controllers/JointPositionController
+    joint: right_servo_base_joint
+
+left_height_controller:
+    type: position_controllers/JointPositionController
+    joint: left_servo_base_joint
+
+back_angle_controller:
+    type: position_controllers/JointPositionController
+    joint: back_base_tube_joint
+
+front_angle_controller:
+    type: position_controllers/JointPositionController
+    joint: front_base_tube_joint
+
+right_angle_controller:
+    type: position_controllers/JointPositionController
+    joint: right_base_tube_joint
+
+left_angle_controller:
+    type: position_controllers/JointPositionController
+    joint: left_base_tube_joint
+
+left_joint_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: rim_left_joint
+    pid: {p: 0.001, i: 0.0, d: 0.0}
+
+back_joint_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: rim_back_joint
+    pid: {p: 0.001, i: 0.0, d: 0.0}
+
+right_joint_velocity_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: rim_right_joint
+    pid: {p: 0.001, i: 0.0, d: 0.0}
+
+        

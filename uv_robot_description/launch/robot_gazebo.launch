@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" default="worlds/empty_world.world"/>
+		<arg name="paused" value="false"/>
+		<arg name="gui" value="true"/>
+	</include>	
+	
+	<param name="robot_description" command="$(find xacro)/xacro '$(find uv_robot_description)/urdf/main.urdf.xacro'" />
+
+	<rosparam file="$(find uv_robot_description)/config/joints.yaml" command="load" ns="fluoresce"/>
+
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/fluoresce"
+		args="--namespace=/fluoresce
+		joint_state_controller
+		back_height_controller
+		front_height_controller
+		right_height_controller
+		left_height_controller
+		back_angle_controller
+		front_angle_controller
+		right_angle_controller
+		left_angle_controller
+		left_joint_velocity_controller
+		back_joint_velocity_controller
+		right_joint_velocity_controller
+		"/>
+
+		
+	<arg name="x" default="0.0" />
+	<arg name="y" default="0.0" />
+	<arg name="z" default="3.0" />
+	
+	<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -model fluoresce -param robot_description"/>
+	
+	<node name="odom_pub" pkg="uv_robot_description" type="odom.py" output="screen"/>
+	
+</launch>
