@@ -3,7 +3,7 @@
 This is the updated version and package of the UV Robot Fluoresce designed for the Hackster.io and Micron UV Robot Competition. </br>
 </br>
 - `cd robot_ws/src`
--  Clone this repo here : `git clone "https://github.com/YugAjmera/omni3ros_pkg"`
+-  Clone this repo here : `git clone "https://github.com/kevrod4/uv_robot_pkg"`
 - `cd ..` (Go back to catkin_ws/)
 - `catkin_make`
 - `source devel/setup.bash`
